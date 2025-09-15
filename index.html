@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Special One!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- jsPDF and html2canvas for PDF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+   </head>
+<body class="bg-pink-50">
+
+    <!-- Music Tracks -->
+    <audio id="music-track-1" src="https://cdn.pixabay.com/audio/2022/02/16/audio_19c1e9f1a2.mp3" loop preload="auto"></audio>
+    <audio id="music-track-2" src="https://cdn.pixabay.com/audio/2023/10/11/audio_1451e94d23.mp3" loop preload="auto"></audio>
+    <audio id="music-track-3" src="https://cdn.pixabay.com/audio/2022/11/21/audio_a1bf823d38.mp3" loop preload="auto"></audio>
+
+    <div class="page-container">
+
+        <!-- Page 1: New Photo-Centric Welcome Screen -->
+        <div id="page1" class="page active bg-gradient-to-br from-pink-100 to-sky-200 overflow-hidden">
+            <canvas id="confetti-canvas"></canvas>
+            
+            <div class="text-center z-10 flex flex-col items-center">
+                <!-- Photo Frame -->
+                <div class="photo-frame">
+                    <div class="photo-frame-bg transform rotate-6"></div>
+                    <div class="photo-frame-bg transform -rotate-6"></div>
+                    <!-- INSERT: Your image URL for Sumit in the src below -->
+                    <img src="assets/WhatsApp Image 2025-09-15 at 7.32.17 PM.jpeg" alt="Photo of Sumit">
+                </div>
+
+                <!-- Birthday Message -->
+                <h1 class="font-handwriting text-4xl md:text-5xl text-pink-500" style="text-shadow: 1px 1px 2px white;">Happy 23rd Birthday</h1>
+                <p class="font-handwriting text-5xl md:text-6xl text-rose-500 mt-1" style="text-shadow: 1px 1px 2px white;">dear Sumit!</p>
+
+                <!-- Button -->
+                <button class="btn-primary block mt-8 animate-pulse" onclick="startJourney()">Open Your Surprise &rarr;</button>
+            </div>
+
+            <!-- Decorative Balloons -->
+            <div class="balloon -left-10 md:left-5 w-40 md:w-64">
+                <svg viewBox="0 0 100 120"><path d="M50 0 C0 30, 0 70, 50 120 C100 70, 100 30, 50 0 Z" fill="#a78bfa" fill-opacity="0.8"/><path d="M50 110 C40 125, 60 125, 50 110 Z" fill="#8b5cf6"/></svg>
+            </div>
+            <div class="balloon -right-10 md:right-5 w-40 md:w-64" style="animation-delay: 5s; animation-duration: 25s;">
+                <svg viewBox="0 0 100 120"><path d="M50 0 C0 30, 0 70, 50 120 C100 70, 100 30, 50 0 Z" fill="#60a5fa" fill-opacity="0.8"/><path d="M50 110 C40 125, 60 125, 50 110 Z" fill="#3b82f6"/></svg>
+            </div>
+             <div class="balloon left-1/4 w-32 md:w-48" style="animation-delay: 10s; animation-duration: 18s;">
+                <svg viewBox="0 0 100 120"><path d="M50 0 C0 30, 0 70, 50 120 C100 70, 100 30, 50 0 Z" fill="#f472b6" fill-opacity="0.8"/><path d="M50 110 C40 125, 60 125, 50 110 Z" fill="#ec4899"/></svg>
+            </div>
+        </div>
+
+        <!-- Page 2: Photo Gallery -->
+        <div id="page2" class="page bg-gradient-to-br from-purple-100 to-indigo-200">
+            <h2 class="font-handwriting text-4xl text-purple-600 mb-6 text-center absolute top-12 md:top-16">A Few of My Favourite Smiles, <span class="birthday-name"></span>!</h2>
+            <div class="flex  justify-center items-center gap-4 max-w-4xl w-full p-4">
+                <!-- Image 1 -->
+                <div class=" xyz bg-white p-3 pb-8 rounded-md shadow-lg transform -rotate-6 hover:rotate-0 hover:scale-110 transition-transform duration-300 cursor-pointer" onclick="openLightbox('https://placehold.co/600x600/a78bfa/ffffff?text=Sumit\'s+Photo')">
+                    <img src="assets/WhatsApp Image 2025-09-15 at 7.32.17 PM (1).jpeg" alt="Photo of Sumit">
+                    <p class="font-handwriting text-purple-700 text-lg mt-2 text-center">Birthday boy</p>
+                </div>
+                <!-- Image 2 -->
+                <div class=" xyz bg-white p-3 pb-8 rounded-md shadow-lg transform rotate-3 hover:rotate-0 hover:scale-110 transition-transform duration-300 z-10 cursor-pointer" onclick="openLightbox('https://placehold.co/600x600/818cf8/ffffff?text=Sumit\'s+Photo')">
+                    <img src="assets/WhatsApp Image 2025-09-15 at 7.32.16 PM (1).jpeg" alt="Photo of Sumit">
+                    <p class="font-handwriting text-purple-700 text-lg mt-2 text-center">mottu ka ptla version</p>
+                </div>
+               
+            </div>
+             <button class="btn-primary !bg-purple-500 absolute bottom-16" onclick="switchPage('page3')">Sweet Memories &rarr;</button>
+        </div>
+
+        <!-- Page 3: Memory Lane -->
+        <div id="page3" class="page bg-gradient-to-br from-green-100 to-cyan-200">
+            <h2 class="font-handwriting text-4xl text-cyan-600 mb-6 absolute top-16">Memory Lane</h2>
+            <div class="space-y-6 max-w-lg w-full">
+                <!-- Memory 1 -->
+                <div class="memory bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white" style="animation-delay: 0.2s;">
+                    <div class="memory-card"> <span class="text-3xl">💖</span>
+                        <div>
+                            <h3 class="font-bold text-lg text-cyan-700">our first chat..</h3>
+                            <p class="text-gray-600 text-sm md:text-base">Snap scroll krte hue itta pyara dost kese milskt hai ???? .</p>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Memory 2 -->
+                <div class="memory bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white" style="animation-delay: 0.4s;">
+                    <div class="memory-card"> <span class="text-3xl">📞</span>
+                        <div>
+                            <h3 class="font-bold text-lg text-cyan-700">our first call</h3>
+                            <p class="text-gray-600 text-sm md:text-base">long journey ka socha nhi tha pr teri awaj mai ek alag hi sukun tha ...</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Memory 3 -->
+                 <div class="memory bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white" style="animation-delay: 0.6s;">
+                    <div class="memory-card"> <span class="text-3xl">😂</span>
+                        <div>
+                             <h3 class="font-bold text-lg text-cyan-700">That Time We Laughed So Hard</h3>
+                            <p class="text-gray-600 text-sm md:text-base"> so many calls so many laughs so many cute fights and a lot of rutna manana session .</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-primary !bg-cyan-500 absolute bottom-16" onclick="switchPage('page4')">A Letter For You &rarr;</button>
+            <!-- Easter Egg Button -->
+            <div id="easter-egg-btn" onclick="openLightbox('https://placehold.co/600x600/fde047/000000?text=Surprise!')" title="A secret?">🤫</div>
+        </div>
+
+        <!-- Page 4: A Heartfelt Letter -->
+        <div id="page4" class="page bg-gradient-to-br from-amber-100 to-yellow-200">
+            <div class="bg-white/70 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-xl max-w-2xl text-center">
+                <h2 class="font-handwriting text-4xl text-yellow-700 mb-4">From My Heart</h2>
+                <div class="text-gray-700 text-left space-y-3 max-h-[40vh] overflow-y-auto px-2">
+                    <p>My Dearest <span class="birthday-name font-bold"></span>,</p>
+                    <p> Mere cutu, Mere sweetheart, or ha Mere MOttu...</p>
+                    <p>Janamdin ki dher saari shubhkaamnayein mere pyare cutu! 🎂💖 Tu meri zindagi ki sabse pyaari khushi hai. . Aaj ke din tu duniya mein aaya tha, isliye yeh din mere liye bhi bahut khaas hai. Main dua karti hoon ki tera aane wala har din tere chehre pe muskaan laye aur tera dil hamesha khush rahe. Hamesha aise hi cute, sweet aur caring bane rehna. Love you lots, cutu! 💫🌈🎉 .</p>
+                    <p>janti hu english mai teri batti gul hai isliye try kiya sb hindi mai likhne ka 😂..</p>
+                </div>
+                <div class="mt-6">
+                    <p class="text-sm text-yellow-800 mb-2">Change the Vibe:</p>
+                    <div class="flex justify-center gap-2">
+                        <button class="text-xs bg-yellow-200 p-2 rounded-full hover:bg-yellow-300 transition" onclick="changeMusic('music-track-1')">🎵 Calm</button>
+                        <button class="text-xs bg-yellow-200 p-2 rounded-full hover:bg-yellow-300 transition" onclick="changeMusic('music-track-2')">🎵 Uplifting</button>
+                        <button class="text-xs bg-yellow-200 p-2 rounded-full hover:bg-yellow-300 transition" onclick="changeMusic('music-track-3')">🎵 Dreamy</button>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-primary !bg-yellow-500 absolute bottom-16" onclick="switchPage('page5'); startHeartParticles();">The Final Surprise! &rarr;</button>
+        </div>
+
+        <!-- Page 5: Final Surprise -->
+        <div id="page5" class="page bg-gradient-to-br from-pink-200 to-rose-200">
+            <canvas id="hearts-canvas"></canvas>
+            <div class="text-center z-10">
+                <h2 class="font-handwriting text-5xl md:text-6xl text-rose-500 mb-4">You're the Best, <span class="birthday-name"></span>!</h2>
+                <p class="text-gray-700 text-lg md:text-xl max-w-md">May your year ahead be as amazing and wonderful as you are. Cheers to you! Once again HAPPY BIRTHDAY CUTU❤️</p>
+                
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lightbox for Photo Gallery -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Enlarged birthday photo">
+    </div>
+
+    </body>
+
+    <script src="app.js"></script>
+</html>
